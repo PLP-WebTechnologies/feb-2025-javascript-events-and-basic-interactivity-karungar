@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura Tours Japan - Book Your Adventure</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css">
+</head>
+<body>
+    <header class="header" id="mainHeader">
+        <h1><i class="fas fa-map-marker-alt"></i> Sakura Tours Japan</h1>
+        <p id="welcomeMessage">Experience the Beauty of Japan</p>
+        <button class="cta-button theme-toggle" onclick="changeHeaderColor()" ondblclick="showSecretMessage()">
+            Change Theme
+        </button>
+        <div id="secretMessage" class="secret-message">
+            You found the secret message! Use code "SAKURA25" for 25% off your first tour!
+        </div>
+    </header>
+
+    <main>
+        <section aria-labelledby="featuredTours">
+            <h2 id="featuredTours">Featured Tours</h2>
+            <div class="tour-card" id="goldenRouteTour">
+                <h3>Golden Route Tour <span class="price">¥98,000</span></h3>
+                <p>Tokyo - Hakone - Kyoto - Osaka</p>
+                <button class="cta-button" onclick="toggleHighlight('goldenRouteTour')">
+                    Highlight This Tour
+                </button>
+            </div>
+
+            <div class="tour-card" id="culturalImmersionTour">
+                <h3>Cultural Immersion Tour <span class="price">¥125,000</span></h3>
+                <p>Tea Ceremonies - Kimono Experience - Traditional Crafts</p>
+                <button class="cta-button" onclick="toggleHighlight('culturalImmersionTour')">
+                    Highlight This Tour
+                </button>
+            </div>
+        </section>
+
+        <section aria-labelledby="photoGallery">
+            <h2 id="photoGallery">Tour Gallery</h2>
+            <div class="slideshow-container">
+                <div class="slideshow-slide active">
+                    <div class="slideshow-img">
+                        <span>Tokyo Skyline</span>
+                    </div>
+                    <p>Experience the bustling metropolis of Tokyo</p>
+                </div>
+                <div class="slideshow-slide">
+                    <div class="slideshow-img">
+                        <span>Kyoto Temples</span>
+                    </div>
+                    <p>Visit the ancient temples of Kyoto</p>
+                </div>
+                <div class="slideshow-slide">
+                    <div class="slideshow-img">
+                        <span>Mount Fuji</span>
+                    </div>
+                    <p>Marvel at Japan's iconic Mount Fuji</p>
+                </div>
+                <button class="prev" onclick="changeSlide(-1)">❮</button>
+                <button class="next" onclick="changeSlide(1)">❯</button>
+            </div>
+        </section>
+
+        <section aria-labelledby="faqSection">
+            <h2 id="faqSection">Frequently Asked Questions</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>What is the best time to visit Japan?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            Spring (March to May) for cherry blossoms and autumn (September to November) 
+                            for fall colors are the most popular times. Summer can be hot and humid, 
+                            while winter is cold but offers excellent skiing opportunities.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Do I need a visa to visit Japan?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            This depends on your nationality. Many countries have visa exemption arrangements 
+                            with Japan allowing stays of up to 90 days. Please check with the Japanese embassy 
+                            or consulate in your country for specific requirements.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>What currency is used in Japan?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            The currency used in Japan is the Japanese Yen (¥). Cash is still widely used in Japan, 
+                            though credit cards are accepted in most hotels, department stores, and restaurants in major cities.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section aria-labelledby="specialDeal">
+            <h2 id="specialDeal">Limited Time Offer</h2>
+            <div id="specialOffer">
+                <p>Book now and get free airport transfer!</p>
+                <button class="cta-button" onclick="toggleSpecialOffer()">
+                    Claim Offer
+                </button>
+            </div>
+        </section>
+
+        <section aria-labelledby="bookingForm">
+            <h2 id="bookingForm">Book Your Tour</h2>
+            <div class="booking-form">
+                <form id="tourBookingForm" novalidate>
+                    <div class="form-group">
+                        <label for="fullName">Full Name*</label>
+                        <input type="text" id="fullName" required>
+                        <div class="error-message" id="fullNameError">Name is required</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address*</label>
+                        <input type="email" id="email" required>
+                        <div class="error-message" id="emailError">Please enter a valid email address</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="tourSelect">Select Tour*</label>
+                        <select id="tourSelect" required>
+                            <option value="">-- Select a Tour --</option>
+                            <option value="golden">Golden Route Tour</option>
+                            <option value="cultural">Cultural Immersion Tour</option>
+                            <option value="adventure">Adventure Japan Tour</option>
+                        </select>
+                        <div class="error-message" id="tourSelectError">Please select a tour</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Create Password (for account)*</label>
+                        <input type="password" id="password" required>
+                        <div class="error-message" id="passwordError">Password must be at least 8 characters</div>
+                    </div>
+                    <button type="submit" class="cta-button">Book Now</button>
+                </form>
+                <div class="success-message" id="formSuccess">
+                    Your booking has been submitted successfully! We'll contact you shortly.
+                </div>
+            </div>
+        </section>
+
+        <div id="bookingCart">
+            <h3>Your Itinerary (<span id="itemCount">0</span>)</h3>
+            <ul id="tourItems"></ul>
+            <button class="cta-button" onclick="addTour()">Add Sample Tour</button>
+            <button class="cta-button" onclick="removeTour()">Remove Last</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
